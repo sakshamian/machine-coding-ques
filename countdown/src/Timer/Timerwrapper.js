@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Timer from '.';
 
-const Timerwrapper = ({ duration, onExpire, beforeRestart }) => {
+const Timerwrapper = ({ duration, onExpire }) => {
     const [expired, setExpired] = useState(false);
 
     const onExpireHelper = () => {

@@ -1,0 +1,33 @@
+<script>
+    window.timeoutIds = [];
+
+    const originalSetTimeout = window.setTimeout;
+
+    window.setTimeout = function (fn, delay) {
+        const id = originalSetTimeout(fn, delay);
+        timeoutIds.push(id);
+        return id;
+    }
+
+    window.clearAllTimeout = function () {
+        while (timeoutIds.length) {
+            clearTimeout(timeoutIds.pop());
+        }
+    }
+
+    setTimeout(() => {
+        console.log('1');
+    }, 1000);
+
+    setTimeout(() => {
+        console.log('2');
+    }, 2000);
+
+    setTimeout(() => {
+        clearAllTimeout();
+    }, 2500);
+
+    setTimeout(() => {
+        console.log('3');
+    }, 3000);
+</script>
